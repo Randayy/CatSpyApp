@@ -32,6 +32,10 @@ class MissionService:
         if not mission:
             raise HTTPException(status_code=404, detail="Mission not found")
         return mission
+    
+    def get_list_of_missions(self) -> list:
+        missions = self.mission_repository.get_list_of_missions()
+        return [MissionSchema.from_orm(mission) for mission in missions]
 
     def delete_mission(self, mission_id: int) -> dict:
         mission = self.get_mission_by_id(mission_id)
@@ -66,7 +70,7 @@ class MissionService:
         if not target:
             raise HTTPException(status_code=404, detail="Target not found")
         if self.check_if_all_mission_targets_completed(mission_id):
-            mission.complete = True
+            self.complete_mission(mission_id)
         target.complete = True
         self.mission_repository.update_mission(mission)
         return {
@@ -125,7 +129,10 @@ class MissionService:
         return {
             "message": f"Notes updated for target with id {target_id} in mission with id {mission_id}"
         }
-
-    def get_list_of_missions(self) -> list:
+        
+        
+    def delete_all_missions(self) -> dict:
         missions = self.mission_repository.get_list_of_missions()
-        return [MissionSchema.from_orm(mission) for mission in missions]
+        for mission in missions:
+            self.mission_repository.delete_mission(mission)
+        return {"message": "All missions deleted"}
