@@ -1,0 +1,11 @@
+fastapi==0.109.0
+pydantic==2.6.4
+uvicorn==0.15.0
+pydantic-settings==2.2.1
+sqlalchemy==2.0.29
+aioredis==2.0.1
+async-timeout==4.0.3
+python-dotenv==1.0.1
+asyncpg==0.29.0
+alembic==1.13.1
+requests==2.32.3
