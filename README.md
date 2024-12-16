@@ -18,6 +18,8 @@ Make sure you have the following installed on your system:
 - `pip` (Python package manager)
 - [Postman](https://www.postman.com/) (optional, for testing endpoints)
 
+- link for a postman requests https://web.postman.co/workspace/00070136-1f0e-4ac5-803c-48f6c74ea7ce/collection/28035084-5146a0e7-2a56-4100-adb7-0ea556e613fa?action=share&source=copy-link&creator=28035084
+
 ### Prerequisites
 
 - Python 3.8+
